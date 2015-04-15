@@ -13,7 +13,7 @@ object sheet {;import org.scalaide.worksheet.runtime.library.WorksheetSupport._;
   
   
   lazy val fs: Stream[Int] =
-  0 #:: 1 #:: fs.zip(fs.tail).map(p => p._1 + p._2);System.out.println("""fs: => Stream[Int]""");$skip(264); 
+  0 #:: 1 #:: fs.zip(fs.tail).map(p => p._1 + p._2);System.out.println("""fs: => Stream[Int]""");$skip(310); 
 
 
 /**
@@ -21,11 +21,14 @@ object sheet {;import org.scalaide.worksheet.runtime.library.WorksheetSupport._;
  the prime factors of 13195 are 5, 7, 13 and 29.
 
 What is the largest prime factor of the number 600851475143 ?
+
+get a list of all prime factors
 */
 
 def factors(n: Long): List[Long] =
   (2 to math.sqrt(n).toInt).find(n % _ == 0)
-    .map(i => i.toLong :: factors(n / i)).getOrElse(List(n));System.out.println("""factors: (n: Long)List[Long]""");$skip(58); 
+    .map(    i => i.toLong :: factors(n / i)).getOrElse(List(n)         );System.out.println("""factors: (n: Long)List[Long]""");$skip(59); 
+
 
 val r = factors(600851475143L).last;System.out.println("""r  : Long = """ + $show(r ));$skip(295);  // last of the sieve
 
@@ -43,10 +46,14 @@ val r = factors(600851475143L).last;System.out.println("""r  : Long = """ + $sho
   rec(2, List()).reverse
 };System.out.println("""primesUnder: (n: Int)List[Int]""");$skip(81); 
 
-def prime(num: Int, factors: List[Int]): Boolean = factors.forall(num % _ != 0);System.out.println("""prime: (num: Int, factors: List[Int])Boolean""");$skip(68); 
+def prime(num: Int, factors: List[Int]): Boolean = factors.forall(num % _ != 0);System.out.println("""prime: (num: Int, factors: List[Int])Boolean""");$skip(39); 
+//////////////
 
+val numbers = 1 to 100;System.out.println("""numbers  : scala.collection.immutable.Range.Inclusive = """ + $show(numbers ));$skip(27); 
+def square(n: Int) = n * n;System.out.println("""square: (n: Int)Int""");$skip(56); 
+val ret = square(numbers.sum) - numbers.map(square).sum;System.out.println("""ret  : Int = """ + $show(ret ));$skip(86); 
 
-
+///////////////////
 val res = fs.view.takeWhile(_ <= 4000000).filter(_ % 2 == 0).sum;System.out.println("""res  : Int = """ + $show(res ))}
 
 }
