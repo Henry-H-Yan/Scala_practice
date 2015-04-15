@@ -1,0 +1,211 @@
+
+
+Scala Learning Notes
+
+"Scalable language"
+  Vars : mutable
+  Val : imutable, can't reassign
+  
+  Every value in Scala is an object  (primitives,  functions too )
+    can use . in snything
+    
+   method VS Function?
+   method: defined for a walk of object
+   
+   Tuples   val myTuple= (1,2,3)
+   sets   vale Set(1,2,3) unqiue
+   lists       List()
+   maps       Map ('a'-->1)
+   
+   multiple assignment with tuples
+       val (a:int, b:char, c: boolean) = (1, 'z', true)
+   
+   List operations  add  1 :: list(2,3,4)  -- >  List (1,2,3,4)
+     Concat  List (1,2) ++ list (3,4)
+       List(1,2,3).tail => list (2,3)
+       list
+       
+       
+       val l = List(1,2,3,4)
+        
+        get the thrid element using head and tail
+        
+        1. Get the 3rd using just head and tail
+        
+        2. create a new list with  5 at the head  
+        
+        scala> l.tail.tail.head
+res0: Int = 3
+
+scala> 5 :: l
+res1: List[Int] = List(5, 1, 2, 3, 4)
+        
+        
+        
+       
+       
+       Conditionals
+       
+           for( var i<- 1 to 10) 
+           
+        Loops through a range
+           1 to 5  Range (1,2,3,4,5)
+           1 until 5,  Rnage (1,2,3,4)
+           
+       write a for comprehension  
+       
+      yeild command example
+      
+      
+      
+      Patther Matching
+      
+       def mathTest(x:Any): Any =x math{
+       case 1=> "One"
+       case "two " =>2
+       case y:Int =>"scala.int"
+       case_=> "other "   // the catch all case
+         }
+         
+         
+     Functions , similar to python
+     
+           Unit is like Java's void
+           
+     def print(name:String) Unit = {  arint (name ) }    
+        
+        def add(a: Int, b: int): Int= {val sum= a+b    sum   (returns last line )}
+        
+    
+    
+    COOLEST THIG
+   Higher order functions,  functions are objects, can be passed to other functions
+        
+        
+     ANANYMOUS FUCNTION
+     
+     val anonAddOne= (x:Int) => x +1
+     anonAddOne(5) -> 6
+     
+     
+     
+     MULTIPLE PARAMTER LISTS
+     
+      def strcat (s1 : str) (s2: str)= {s1+s2}
+      
+      -- currying
+      def appendCat (s:Stirng) = strcat("cat")
+      
+      
+      
+      
+    //  Define an anonymous function which takes an int, tests whether its even
+    test function in REPL
+     
+     
+     
+     What is Functional Programming
+     
+      - side effect free ,  output depends only on input, 
+          calling twice produce same result
+     -function can take function as argument
+         - can return functions as results 
+         
+         
+     Map,   applies a function to each element in a list
+          def timeswo = 2 *x
+          
+          List(1,2,3).map (timesTwo) // function as input
+                      map timesTwo
+                      map (_*2)
+                   (above are same)
+   
+   
+      flatMap
+      
+      
+      Filter ,  collects all elements that satisfy a predicate
+      
+        List 1,2,3  filter (_%2 ==1)
+        
+        find-similar, but only gets one element (the first 
+        )
+        
+                 find (
+      
+      
+     FOLD 
+     
+     
+     skipeed
+     
+     
+       list (   list...  )
+       
+       l.map(_.head)
+       l.filter(_.head== "Apple")
+       
+     Options
+        scala prefers options to nulls
+        
+         can either return some or None
+         
+         
+     Classes
+     
+     
+     Traits   
+        Similar to interfaces in Java. You can extend
+ multiple traits
+        trait Male { def favoriteColor():String = "blue" }
+
+
+
+        class MaleEngineer(override val name: String, override val
+         salary:Int, languages:List[String]) extends Employee(name,
+salary) with Male
+
+
+val john = new MaleEngineer("john", 100000, Nil)
+john.favoriteColor
+       
+   Object
+      
+      
+      Match function to match object
+      
+      
+      
+      def peopleMatcher(p: Person) = p match {
+       case Recruiter(name, salary, people) => f"Recruiter $name has ${people.
+size} people"
+ case Engineer(name, salary, Nil) => f"$name has no skills!"
+ case Engineer(name, salary, languages) if languages.contains("Scala") =>
+ val x = f"$name Knows Scala!"
+ x
+ case Engineer(name, salary, languages) => f"$name Doesn't know Scala"
+ case _ => "Huh?"
+}
+Create various people (recruiters, employees, engineers) and match them
+using peopleMatcher. Hint: Don’t need to use ‘new’ with case class  
+
+
+Async programming w/ Futures
+● Perform operations parallel
+● Handles expensive calls in non-blocking
+manner
+● Allows Scala servers to scale to thousands
+of requests/second
+
+
+
+
+Play web development Framework,  MVC, like Ruby on Rials 
+
+compatible with Java
+
+
+
+
+     
+     
